@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <html lang="en">
+    <title></title>
+    <link rel="stylesheet" href="../../static/css/programs.css">
+    {% include 'main/link.html' %}
+
+    <title>Login</title>
+    {% include 'main/nav.html' %}
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="input-field">
+              <input id="program_search" type="search" required>
+              <label class="label-icon" for="program_search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+        </div>
+
+        <div class="show-more">
+            <a href="#">Advanced Search</a>
+        </div>
+        
+        <div class="filter hide">
+            <div class="row">
+                <div class="input-field col s6">
+                    <select>
+                        <option value="" disabled selected>Choose your option</option>
+
+                        <option value="1">Apartments North</option>
+                        <option value="2">Apartments South</option>
+                        <option value="3">Brookings</option>
+                        <option value="4">Hitzeman Hurd and Myers</option>
+                        <option value="5">Lee Beaumont</option>
+                        <option value="6">Liggett Koenig </option>
+                        <option value="7">Park and Mudd</option>
+                        <option value="8">Umrath and South Forty House</option>
+
+                        <option value="9">Shanedling Dauten and Rutledge</option>
+                        <option value="11">The Village</option>
+                        <option value="10">Thomas H. Eliot</option>
+                        <option value="12">Wayman Crow</option>
+                        <option value="13">William Greenleaf Eliot </option>
+                    </select>
+                    <label>Residential College</label>
+                </div>
+                <div class="input-field col s6">
+                    <select>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1">First Year Residents</option>
+                        <option value="2">Sophomore Residents</option>
+                        <option value="3">Junior Residents</option>
+                        <option value="4">Senior Residents</option>
+                        <option value="5">Entire Community</option>
+                    </select>
+                    <label>Student Type</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <select>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1">1 week</option>
+                        <option value="2">2 weeks</option>
+                        <option value="3">3 weeks</option>
+                        <option value="4">1 month</option>
+                        <option value="5">2 month</option>
+                        <option value="6">3+ month</option>
+                    </select>
+                    <label>Time ago</label>
+                </div>
+                <div class="input-field col s6">
+                    <select>
+                        <option value="" disabled selected>Choose your option</option>
+                        <optgroup label="Active Program:">
+                            <option value="1">Floor/Community Program</option>
+                            <option value="2">Off Campus Program</option>
+                            <option value="3">Attend On Campus Event</option>
+                            <option value="4">Attend Off Campus Event</option>
+                            <option value="5">Community Service</option>
+                            <option value="6">Floor/Community Dinner</option>
+                            <option value="7">Game Night</option>
+                            <option value="8">Movie with Discussion</option>
+                            <option value="9">Workshop</option>
+                            <option value="10">Guest Speaker</option>
+                        </optgroup>
+                        <optgroup label="Passive Program:">
+                            <option value="11">Passive Program </option>
+                            <option value="12">Bulletin Board</option>
+                            <option value="13">Potty Press</option>
+                            <option value="14">Newsletter</option>
+                        </optgroup>
+                    </select>
+                    <label>Type of program</label>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div class="row">
+             <table>
+                <thead>
+                  <tr>
+                      <th>Program Name</th>
+                      <th>Date</th>
+                      <th>Community</th>
+                      <th>Type of Program</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                {% for program in allPrograms %}
+                  <tr>
+                    <td>{{program.program_name}}</td>
+                    <td>{{program.date}}</td>
+                    <td>{{program.location}}</td>
+                    <td>{{program.program_type}}</td>
+                    <td><a href="#{{program.id}}_details">More Details</a></td>
+                  </tr>
+
+                  <div id="{{program.id}}_details" class="modal" style="width: 75%">
+                    <div class="modal-content">
+                      <div class="row">
+                        <div class="col s12">
+                          <ul class="tabs">
+                            <li class="tab col s3"><a href="#{{program.id}}_overview" class="active">Overview</a></li>
+                            <li class="tab col s3"><a href="#{{program.id}}_sponsors">Sponsors</a></li>
+                            <li class="tab col s3"><a href="#{{program.id}}_administrative">Administrative</a></li>
+                            <li class="tab col s3"><a href="#{{program.id}}_evaluation">Evaluation</a></li>
+                          </ul>
+                        </div>
+                        <div id="{{program.id}}_overview">
+                            <div class="row">
+                                <div class="col s6">
+                                    <div class="title">
+                                        Program Title:
+                                    </div>
+                                    <div class="left-box">
+                                        {{program.program_name}}
+                                    </div>
+                                </div>
+                                <div class="col s3">
+                                    <div class="date">
+                                        Date:
+                                    </div>
+                                    <div class="left-box">
+                                        {{program.date}}
+                                    </div>
+                                </div>
+                                <div class="col s3">
+                                    <div class="time">
+                                        Time:
+                                    </div>
+                                    <div class="left-box">
+                                        {{program.time}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s6">
+                                    <div class="type">
+                                        Type:
+                                    </div>
+                                    <div class="left-box">
+                                        {{program.program_type}}
+                                    </div>
+                                </div>
+                                <div class="col s3">
+                                    <div class="location">
+                                        Location:
+                                    </div>
+                                    <div class="left-box">
+                                        {{program.location}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="description">
+                                        Description:
+                                    </div>
+                                    <div class="left-box">
+                                        {{program.description}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="{{program.id}}_sponsors">
+                            <div class="row">
+                                <div class="col s6">
+                                    <div class="primary_sponsor">
+                                        Primary Sponsor:
+                                    </div>
+                                    <div class="left-box">
+                                        {{program.primary_sponsor}}
+                                    </div>
+                                </div>
+                                <div class="col s6">
+                                    <div class="secondary_sponsor">
+                                        Secondary Sponsor:
+                                    </div>
+                                    <div class="left-box">
+                                        {{program.secondary_sponsor}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s6">
+                                    <div class="time">
+                                        Organizations involved:
+                                    </div>
+                                    <div class="left-box">
+                                        {{program.organizations_involved}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="{{program.id}}_administrative">
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="community">
+                                        Residential Community:
+                                    </div>
+                                    <div class="left-box">
+                                        {{program.community}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s6">
+                                    <div class="money_spent">
+                                        Money Spent:
+                                    </div>
+                                    <div class="left-box">
+                                        {{program.money_spent}}
+                                    </div>
+                                </div>
+                                <div class="col s6">
+                                    <div class="money_spent">
+                                        Money Left:
+                                    </div>
+                                    <div class="left-box">
+                                        Include money left
+                                        {{program.money_left}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="{{program.id}}_evaluation">
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="implementation">
+                                        What went well with planning and implementation?
+                                    </div>
+                                    <div class="left-box">
+                                        {{program.implementation}}
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="improvement">
+                                        What could be improved?
+                                    </div>
+                                    <div class="left-box">
+                                        {{program.improvement}}
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="assessment">
+                                        How was the program assessed?
+                                    </div>
+                                    <div class="left-box">
+                                        {{program.assessment}}
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('select').material_select();
+        $('.collapsible').collapsible();
+        $('ul.tabs').tabs();
+
+        $(".show-more a").on("click", function() {
+            if($('.show-more a').text() === "Advanced Search"){
+                $(".filter").removeClass("hide");
+                $('.show-more a').text('Show Less');
+            } else {
+                $(".filter").addClass("hide");
+                $('.show-more a').text('Advanced Search');
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal();
+    });
+</script>
+
+
+</html>

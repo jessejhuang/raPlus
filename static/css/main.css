@@ -1,0 +1,11 @@
+.tabs .tab a{
+    color: #0D47A1 !important;
+}
+
+.tabs .tab a:hover, .tabs .tab a.active {
+    color: #0D47A1;
+}
+
+.tabs .indicator {
+    color: grey;
+}

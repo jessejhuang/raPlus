@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include 'main/link.html' %}
+
+    <title>Submit Program</title>
+    {% include 'main/nav.html' %}
+
+    <style>
+      .tabs .tab a.active, .tabs .tab a, .tabs .indicator, select, select option {
+        color: royalblue;
+      }
+    </style>
+</head>
+
+<body>
+  <div class="container row">
+      <h3>Submit Program</h3>
+
+      <!--Tab Bar-->
+      <ul id="program_tabs" class="tabs tabs-fixed-width">
+        <li class="tab col s3"><a href="#program-swipe-1">Fundamentals</a></li>
+        <li class="tab col s3"><a href="#program-swipe-2">Sponsors and Budget</a></li>
+        <li class="tab col s3"><a href="#program-swipe-3">Description</a></li>
+        <li class="tab col s3"><a href="#program-swipe-4">Assessment and Submit</a></li>
+      </ul>
+
+      <form class="col s12" method="post" action="/post_program">
+
+        <div id="program-swipe-1" class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">mode_edit</i>
+                  <input id="program_name" name="program_name" type="text" class="validate" required>
+                  <label for="program_name">Program Title</label>
+                </div>
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">label_outline</i>
+                  <input id="program_type" name="program_type" type="text" class="validate" placeholder="Diversity & Inclusion" required>
+                  <label for="program_type">Program Type</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">today</i>
+                  <input id="date" name="date" type="text" class="validate" placeholder="03/27/2017">
+                  <label for="date">Date</label>
+                </div>
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">schedule</i>
+                  <input id="time" name="time" type="text" class="validate" placeholder="12:00pm">
+                  <label for="time">Time</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">room</i>
+                  <input id="location" name="location" type="text" class="validate" placeholder="Floor Common Room" required>
+                  <label for="location">Location</label>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <i class="material-icons prefix">business</i>
+                    <select multiple id="community">
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="1">Apartments North</option>
+                      <option value="2">Apartments South</option>
+                      <option value="3">Robert S. Brookings</option>
+                      <option value="4">Hitzeman, Hurd, and Myers</option>
+                      <option value="5">Lee/Beaumont</option>
+                      <option value="6">Liggett/Koenig </option>
+                      <option value="7">Park/Mudd</option>
+                      <option value="8">Umrath and South Forty House</option>
+                      <option value="9">Shanedling, Dauten, and Rutledge</option>
+                      <option value="11">The Village</option>
+                      <option value="10">Thomas H. Eliot</option>
+                      <option value="12">Wayman Crow</option>
+                      <option value="13">William Greenleaf Eliot </option>
+                    </select>
+                    <label for="community">Residential College/Community</label>
+                  </div>
+                </div>
+                <!-- <div class="input-field col s6">
+                    <i class="material-icons prefix">supervisor_account</i>
+                    <select multiple id="student_type">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1">First Year Residents</option>
+                        <option value="2">Sophomore Residents</option>
+                        <option value="3">Junior Residents</option>
+                        <option value="4">Senior Residents</option>
+                    </select>
+                    <label for="student_type">Students Involved</label>
+                </div> -->
+            </div>
+            <!-- <a href="#program-swipe-2" id="swipe-1-next-button" class="btn-large waves-effect waves-light  blue darken-3">Next</a> -->
+          </div>
+        <div id="program-swipe-2" class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">store</i>
+                  <input id="organizations_involved" name="organizations_involved" type="text" class="validate" required>
+                  <label for="organizations_involved">Organizations Involved</label>
+                </div>
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">payment</i>
+                  <input id="money_spent" name="money_spent" type="text" class="validate" placeholder="$50.00" required>
+                  <label for="money_spent">Money Spent</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">group_work</i>
+                  <input id="primary_sponsor" name="primary_sponsor" type="text" class="validate">
+                  <label for="primary_sponsor">Primary Sponsor</label>
+                </div>
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">group_work</i>
+                  <input id="secondary_sponsor" name="secondary_sponsor" type="text" class="validate">
+                  <label for="secondary_sponsor">Secondary Sponsor</label>
+                </div>
+            </div>
+            <!-- <a href="#program-swipe-3" id="swipe-2-next-button" class="btn-large waves-effect waves-light  blue darken-3">Next</a> -->
+        </div>
+        <div id="program-swipe-3" class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">info_outline</i>
+                  <textarea id="description" name="description" class="materialize-textarea" required></textarea>
+                  <label for="description">Description</label>
+                </div>
+            </div>
+            <!-- <a href="#program-swipe-4" id="swipe-3-next-button" class="btn-large waves-effect waves-light  blue darken-3">Next</a> -->
+        </div>
+        <div id="program-swipe-4" class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">done_all</i>
+                  <textarea id="implementation" name="implementation" class="materialize-textarea"></textarea>
+                  <label for="implementation">What went well with planning and implementation?</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">trending_up</i>
+                  <textarea id="improvement" name="improvement" class="materialize-textarea"></textarea>
+                  <label for="improvement">What could be improved?</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">assessment</i>
+                  <textarea id="assessment" name="assessment" class="materialize-textarea"></textarea>
+                  <label for="assessment">How was the program assessed?</label>
+                </div>
+            </div>
+            <input type="submit" name="submit" class="btn waves-effect waves-green blue darken-3" />
+            <button class="btn waves-effect waves-red blue darken-3" type="reset" name="/submit">Reset</button>
+        </div>
+    </form>
+  </div>
+
+</body>
+
+<script type="text/javascript">
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 1 // Creates a dropdown of 2 years to control year
+    });
+    $(document).ready(function() {
+      $('select').material_select();
+    });
+    $(document).ready(function(){
+      $('ul.tabs').tabs({
+        //  swipeable:true
+      });
+    });
+</script>
+
+</html>

@@ -1,0 +1,81 @@
+<style type="text/css">
+header, main, footer, nav, body {
+  padding-left: 250px;
+}
+
+@media only screen and (max-width : 992px) {
+  header, main, footer, nav, body {
+    padding-left: 0;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 85%;
+}
+
+@media only screen and (min-width: 601px) {
+  .container {
+    width: 85%;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 90%;
+  }
+
+a.button-collapse {
+    display: none;
+  }
+}
+</style>
+
+  <nav class="#90a4ae blue-grey lighten-2">
+    <div class="nav-wrapper">
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#"><i class="material-icons">search</i></a></li>
+        <li><a href="#"><i class="material-icons">view_module</i></a></li>
+        <li><a href="#"><i class="material-icons">more_vert</i></a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+<ul id="slide-out" class="side-nav fixed">
+    <li>
+      <div class="userView">
+        <div class="background">
+          <img src="https://source.unsplash.com/random">
+        </div>
+        <a href="#!user"><img class="circle" src="https://source.unsplash.com/category/people"></a>
+        <a href="#!name"><span class="white-text name">Vish Red</span></a>
+        <a href="#!email"><span class="white-text email">21vish@savage.com</span></a>
+      </div>
+    </li>
+    <li><a href="/dashboard"><i class="material-icons">dashboard</i>Dashboard</a></li>
+    <li><a href="/calendar"><i class="material-icons">perm_contact_calendar</i>Calendar</a></li>
+    <li><a href="/programs"><i class="material-icons">view_list</i>All Programs</a></li>
+    <li><a href="/ra-directory"><i class="material-icons">contacts</i>RA Directory</a></li>
+    <li><a href="#!"><i class="material-icons">chat</i>Messages</a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="/submit_program"><i class="material-icons">open_in_new</i>New Program</a></li>
+    <li><a href="submit_1-1"><i class="material-icons">perm_identity</i>New 1:1</a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="#!"><i class="material-icons">equalizer</i>Analytics</a></li>
+    <li><a href="/features"><i class="material-icons">code</i>Features</a></li>
+    <li><a href="#!"><i class="material-icons">settings</i>Settings</a></li>
+  </ul>
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+
+<script type="text/javascript">
+  
+  $('.button-collapse').sideNav({
+      menuWidth: 250, // Default is 300
+      edge: 'left', // Choose the horizontal origin
+      draggable: true // Choose whether you can drag to open on touch screens
+    }
+  );
+          
+</script>

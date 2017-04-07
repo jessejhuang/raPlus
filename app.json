@@ -1,0 +1,7 @@
+{
+  "name": "RA Plus",
+  "description": "Content Management System for WUSTL RA's",
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ]
+}

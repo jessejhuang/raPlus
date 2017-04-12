@@ -1,1 +1,222 @@
-In development
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include 'main/link.html' %}
+
+    <title>1:1 List</title>
+    {% include 'main/nav.html' %}
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="input-field">
+          <input id="program_search" type="search" required>
+          <label class="label-icon" for="program_search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+    </div>
+
+    <div class="show-more">
+        <a href="#">Advanced Search</a>
+    </div>
+
+    <div class="filter hide">
+        <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">mode_edit</i>
+              <input id="resident_name" name="resident_name" type="text" class="validate">
+              <label for="resident_name">Resident Name</label>
+            </div>
+            <div class="input-field col s6">
+              <i class="material-icons prefix">room</i>
+              <input id="room_number" name="room_number" type="text" class="validate">
+              <label for="room_number">Room Number</label>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <!-- <div class="row">
+        {% for ra in allRA %}
+    	<div class="col s3" style="text-align: center;">
+			<a href="#{{ra.id}}_info"><img class="responsive-img" src="{{ra.profile_image}}" width="300px" height="400px"></a>
+			<p><strong>{{ra.staff_first_name}} {{ra.staff_last_name}}</strong></p>
+			<p>Staff: {{ra.residential_building}}</p> <br>
+		</div>
+
+
+        <div id="{{ra.id}}_info" class="modal" style="width: 75%">
+            <div class="modal-content">
+              <div class="row">
+                <div class="col s12">
+                  <ul class="tabs">
+                    <li class="tab col s3"><a href="#{{ra.id}}_personal" class="active">Personal</a></li>
+                    <li class="tab col s3"><a href="#{{ra.id}}_contact">Contact</a></li>
+                    <li class="tab col s3"><a href="#{{ra.id}}_recent_programs">Recent Programs</a></li>
+                    <li class="tab col s3"><a href="#{{ra.id}}_residents">Residents</a></li>
+                  </ul>
+                </div>
+                <div id="{{ra.id}}_personal">
+                    <div class="row">
+                        <div class="col s6">
+                            <div class="name">
+                                Name:
+                            </div>
+                            <div class="left-box">
+                                {{ra.staff_first_name}} {{ra.staff_last_name}}
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <div class="birthday">
+                                Birthday:
+                            </div>
+                            <div class="left-box">
+                                {{ra.birth_date}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <div class="community">
+                                Community:
+                            </div>
+                            <div class="left-box">
+                                {{ra.residential_community}}
+                            </div>
+                        </div>
+                        <div class="col s3">
+                            <div class="school">
+                                School Enrolled:
+                            </div>
+                            <div class="left-box">
+                                {{ra.school}}
+                            </div>
+                        </div>
+                        <div class="col s3">
+                            <div class="status">
+                                Status:
+                            </div>
+                            <div class="left-box">
+                                {{ra.status}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="{{ra.id}}_contact">
+                    <div class="row">
+                        <div class="col s4">
+                            <div class="cell">
+                                Cell Phone:
+                            </div>
+                            <div class="left-box">
+                                {{ra.cell_phone}}
+                            </div>
+                        </div>
+                        <div class="col s4">
+                            <div class="email">
+                                Email:
+                            </div>
+                            <div class="left-box">
+                                {{ra.email}}
+                            </div>
+                        </div>
+                        <div class="col s4">
+                            <div class="hometown">
+                                Hometown:
+                            </div>
+                            <div class="left-box">
+                                {{ra.home_location}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s4">
+                            <div class="building">
+                                Residential Building:
+                            </div>
+                            <div class="left-box">
+                                {{ra.residential_building}}
+                            </div>
+                        </div>
+                        <div class="col s4">
+                            <div class="room">
+                                Room Number:
+                            </div>
+                            <div class="left-box">
+                                {{ra.room_number}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="{{ra.id}}_recent_programs">
+                    <table>
+	                    <thead>
+		                  <tr>
+		                      <th>Program Name</th>
+		                      <th>Date</th>
+		                      <th>Community</th>
+		                      <th>Type of Program</th>
+		                  </tr>
+		                </thead>
+
+		                <tbody>
+
+		                </tbody>
+	                </table>
+                </div>
+                <div id="{{ra.id}}_residents">
+                    <table>
+	                    <thead>
+		                  <tr>
+		                      <th>First Name</th>
+		                      <th>Last Name</th>
+		                      <th>Email</th>
+		                      <th>Room Number</th>
+		                      <th>Status</th>
+		                  </tr>
+		                </thead>
+
+		                <tbody>
+
+		                </tbody>
+	                </table>
+                </div>
+              </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div> -->
+
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('select').material_select();
+        $('.collapsible').collapsible();
+        $('ul.tabs').tabs();
+
+        $(".show-more a").on("click", function() {
+            if($('.show-more a').text() === "Advanced Search"){
+                $(".filter").removeClass("hide");
+                $('.show-more a').text('Show Less');
+            } else {
+                $(".filter").addClass("hide");
+                $('.show-more a').text('Advanced Search');
+            }
+        });
+    });
+    $(document).ready(function () {
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal();
+    });
+
+
+</script>
+
+</html>

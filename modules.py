@@ -1,28 +1,36 @@
 from app import *
 
 # registering users into database
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(80))
     last_name = db.Column(db.String(80))
     email = db.Column(db.String(120), unique=True)
-    password = db.Column(db.String(80))
-
+    pw_hash = db.Column(db.String(80))
+    position = db.Column(db.String(80))
     def __init__(
         self,
         first_name,
         last_name,
         email,
-        password
+        password,
+        position
+
     ):
 
         self.first_name = first_name
         self.last_name = last_name
         self.email = email
         self.password = password
+        self.position = position
+        UserMixin.__init__(self,roles)
 
     def __repr__(self):
         return '<Name %r>' % self.email
+    def set_password(self, password):
+        self.pw_hash = generate_password_hash(password)
+    def check_password(self, password):
+        return check_password_hash(self.pw_hash, password)
 
  # adding programs
  # change the types later
@@ -83,10 +91,9 @@ class Program(db.Model):
 # resident 1:1
 class one_on_one(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    resident_name = db.Column(db.String(80))
-    #resident_first_name = db.Column(db.String(80))
-    #resident_second_name = db.Column(db.String(80))
-    #housing = db.Column(db.String(80))
+    resident_first_name = db.Column(db.String(80))
+    resident_last_name = db.Column(db.String(80))
+    housing = db.Column(db.String(80))
     room_number = db.Column(db.String(10))
     recommended_resources = db.Column(db.String(300))
     concerns = db.Column(db.String(300))

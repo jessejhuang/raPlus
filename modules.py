@@ -135,7 +135,7 @@ class ra_directory(db.Model):
     school = db.Column(db.String(40))
     status = db.Column(db.String(20))
     email = db.Column(db.String(100))
-    profile_image = db.Column(db.String(70))
+    profile_image = db.Column(db.String(170))
 
     def __init__(
         self,
@@ -183,7 +183,7 @@ class resident_directory(db.Model):
     school = db.Column(db.String(40))
     status = db.Column(db.String(20))
     email = db.Column(db.String(100))
-    profile_image = db.Column(db.String(70))
+    profile_image = db.Column(db.String(170))
 
     def __init__(
         self,

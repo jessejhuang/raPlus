@@ -10,6 +10,8 @@ from flask_principal import Identity, identity_changed, identity_loaded, Anonymo
 app = Flask(__name__)
 app.secret_key = "foobarbazz"
 app.debug = True
+#Line below supresses this warning upon python app.py: 'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['postgresql://postgres@localhost/raPlus']
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres@localhost/raPlus'

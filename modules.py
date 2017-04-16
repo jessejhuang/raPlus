@@ -6,7 +6,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(80))
     last_name = db.Column(db.String(80))
     email = db.Column(db.String(120), unique=True)
-    pw_hash = db.Column(db.String(80))
+    pw_hash = db.Column(db.String(250))
     position = db.Column(db.String(80))
     def __init__(
         self,
@@ -23,7 +23,7 @@ class User(db.Model, UserMixin):
         self.email = email
         self.password = password
         self.position = position
-        UserMixin.__init__(self,roles)
+        #UserMixin.__init__(self,roles)
 
     def __repr__(self):
         return '<Name %r>' % self.email

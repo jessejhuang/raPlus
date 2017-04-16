@@ -12,11 +12,13 @@
 
 <div class="container">
     <div class="row">
-        <div class="input-field">
-          <input id="program_search" type="search" required>
-          <label class="label-icon" for="program_search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
-        </div>
+        <form onsubmit="myFunction()">
+            <div class="input-field">
+              <input id="ra_search" type="search"> 
+              <label class="label-icon" for="ra_search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+        </form>
     </div>
 
     <div class="show-more">
@@ -231,6 +233,19 @@
             }
         });
     });
+    function myFunction() {
+    var search = $('#ra_search').val();
+    window.location.href = '/ra-directory/q=';
+        $.ajax({
+            success: function () {
+                window.location.href = '/ra-directory/q=' + search;
+            },
+            error: function () {
+                Materialize.toast('Search Failed', 2000);
+            }
+        });
+    }
+
     $(document).ready(function () {
         // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
         $('.modal').modal();

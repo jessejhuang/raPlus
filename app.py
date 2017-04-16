@@ -103,9 +103,15 @@ def post_program():
     db.session.commit()
     return redirect(url_for('home'))
 
+# query programs using search bar
+@app.route('/programs/q=<search>', methods=['GET', 'POST'])
+def programs(search):
+    allPrograms = modules.Program.query.filter(modules.Program.program_name.contains(search))
+    return render_template('user/programs_list.html', allPrograms = allPrograms)
+
 # query programs
 @app.route('/programs')
-def programs():
+def all_program():
     allPrograms = modules.Program.query.all()
     return render_template('user/programs_list.html', allPrograms = allPrograms)
 
@@ -114,6 +120,12 @@ def programs():
 def OneonOne():
     OneonOneList = modules.Program.query.all()
     return render_template('user/oneonone_list.html', OneonOneList = OneonOneList)
+
+# query ra using search bar
+@app.route('/ra-directory/q=<search>', methods=['GET', 'POST'])
+def ra_directory_search(search):
+    allRA = modules.ra_directory.query.filter(modules.ra_directory.staff_first_name.contains(search))
+    return render_template('user/ra_directory.html', allRA = allRA)
 
 # query ra directory 
 @app.route('/ra-directory')

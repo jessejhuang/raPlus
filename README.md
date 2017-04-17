@@ -12,7 +12,7 @@
 * Track program progress: Submitted, approved, need improvements….
 * Log and manage RA/RCD 1:1's: RAs often log interactions with residents for future reference and support referral
 * Manage floor budgets: Track RA spending and see exactly where the money is going
-* Manage staff: Residential College Directors are able to keep tabs on their staffs
+* Manage staff: Residential College Directors are able to keep tabs on their staffs.
 * Program Calendar: See what's going on in the community around you. 
 
 ## Application Architecture

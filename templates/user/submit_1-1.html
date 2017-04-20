@@ -14,15 +14,16 @@
         <div class="row">
             <form class="col s12" method="post" action="/submit_1-1">
                 <div class="row">
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix">mode_edit</i> <!-- eventually change to one field for first+last name instead of two fields -->
+                    <div class="input-field col s3">
                         <input id="resident_first_name" name="resident_first_name" type="text" class="validate">
                         <label for="resident_first_name">Resident First Name</label>
+                        
+                    </div>
+                    <div class="input-field col s3">
                         <input id="resident_last_name" name="resident_last_name" type="text" class="validate">
                         <label for="resident_last_name">Resident Last Name</label>
                     </div>
                     <div class="input-field col s6">
-                        <i class="material-icons prefix">room</i>
                         <input id="room_number" name="room_number" type="text" class="validate">
                         <label for="room_number">Room Number</label>
                     </div>
@@ -36,7 +37,6 @@
                 </div> -->
                 <div class="row">
                     <div class="input-field col s12">
-                        <i class="material-icons prefix">group_work</i>
                         <input id="recommended_resources" name="recommended_resources" type="text" class="validate">
                         <!-- Make select boxes -->
                         <label for="recommended_resources">Resources Recommended</label>
@@ -44,14 +44,12 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <i class="material-icons prefix">warning</i>
                         <input id="concerns" name="concerns" type="text" class="validate">
                         <label for="concerns">Concerns</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <i class="material-icons prefix">info_outline</i>
                         <textarea id="notes" name="notes" class="materialize-textarea"></textarea>
                         <label for="notes">Notes</label>
                     </div>

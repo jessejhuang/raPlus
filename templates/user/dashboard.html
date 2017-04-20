@@ -14,8 +14,109 @@
     <title>Home -- RAplus+</title>
     {% include 'main/nav.html' %}
 </head>
-
+<style type="text/css">
+.card .card-content {
+    padding: 10px;
+    border-radius: 0 0 2px 2px;
+}
+</style>
 <body>
+
+    <div class="row">
+        <div class="col s4">
+          <div class="card">
+            <div class="card-content white-text #43a047 green darken-1">
+              <span class="card-title">Reminders</span>
+            </div>
+            <ul>
+                <li>
+                    <div class="card-action">
+                        <input type="checkbox" id="task1">
+                        <label for="task1">Do your shit</label>
+                    </div>
+                </li>
+                <li>
+                    <div class="card-action">
+                        <input type="checkbox" id="task2">
+                        <label for="task2">Beat up Tony</label>
+                    </div>
+                </li>
+            </ul>  
+          </div>
+        </div>
+        <div class="col s8">
+            <p>Upcomming Programs:</p>
+            <div style="height:200px;overflow:auto;">
+                <table class="striped">
+                    <thead class="#039be5 light-blue darken-1">
+                      <tr>
+                          <th>Name</th>
+                          <th>Date</th>                      
+                          <th>Type</th>
+                          <th>Location</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>Meet your RA's</td>
+                        <td>May 1, 2017</td>
+                        <td>Active</td>
+                        <td>Ligget/Koenig</td>
+                      </tr>
+                      <tr>
+                        <td>Ice Cream with FA</td>
+                        <td>April 22, 2017</td>
+                        <td>Active</td>
+                        <td>SoFoHo Common</td>
+                      </tr>
+                      <tr>
+                        <td>Stress relief nuts</td>
+                        <td>April 28, 2017</td>
+                        <td>Active</td>
+                        <td>K3 Common room</td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>Recent Programs:</p>
+            <div style="height:200px;overflow:auto;">
+                <table class="striped">
+                    <thead class="#f57f17 yellow darken-4">
+                      <tr>
+                          <th>Name</th>
+                          <th>Date</th>                      
+                          <th>Type</th>
+                          <th>Location</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Skating on Mudd</td>
+                        <td>April 15 1, 2017</td>
+                        <td>Active</td>
+                        <td>Ligget/Koenig</td>
+                      </tr>
+                      <tr>
+                        <td>Self Care Poster</td>
+                        <td>April 10, 2017</td>
+                        <td>Passive</td>
+                        <td>SoFoHo 2</td>
+                      </tr>
+                      <tr>
+                        <td>Java and Java</td>
+                        <td>April 07, 2017</td>
+                        <td>Active</td>
+                        <td>K1 Common room</td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+
 </body>
 
 </html>

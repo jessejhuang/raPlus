@@ -8,7 +8,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="RPDP CMS">
     <meta name="author" content="Justin Guyton, Vish Reddy, Jesse Huang, Danny Weiner">
-    <link rel="stylesheet" href="../../static/css/home.css"> 
+    <link rel="stylesheet" href="../../static/css/home.css">
     {% include 'main/link.html' %}
 
     <title>Home -- RAplus+</title>
@@ -16,6 +16,45 @@
 </head>
 
 <body>
+  <!-- Features-->
+  <div class="container grey-text text-darken-2">
+      <!--   Icon Section   -->
+      <div class="container" id="features">
+          <div class="divider-new">
+              <h4 class="center">Hello, {{current_user.first_name}}</h4>
+          </div>
+      </div>
+      <div class="featureList" style="padding-bottom: 75px">
+          <div class="row">
+              <div class="col s12 m4">
+                  <div class="icon-block">
+                      <h2 class="center blue-text text-darken-3"><i class="medium material-icons">grade</i></h2>
+                      <h5 class="center">Recent Programs</h5>
+                      <p class="light center">Record feedback, assess learning outcomes.</p>
+
+                  </div>
+              </div>
+
+              <div class="col s12 m4">
+                  <div class="icon-block">
+                      <h2 class="center blue-text text-darken-3"><i class="medium material-icons">payment</i></h2>
+                      <h5 class="center">Floor Budget</h5>
+
+                      <p class="light center">Manage floor budget, track semester spending.</p>
+                  </div>
+              </div>
+              <div class="col s12 m4">
+                  <div class="icon-block">
+                      <h2 class="center blue-text text-darken-3"><i class="medium material-icons">today</i></h2>
+                      <h5 class="center">Upcoming Events</h5>
+
+                      <p class="light">Stay up to date with what is going on in the community around you.</p>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+  </div>
 </body>
 
 </html>

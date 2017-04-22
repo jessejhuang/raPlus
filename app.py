@@ -226,15 +226,19 @@ def test_log():
 
 @app.route('/rcd_only')
 @login_required
-@rcd_privilege.require()
+@rcd_privilege.require(http_exception=403)
 def rcd_only():
     return "For RCD only"
 
 @app.route('/rcd_or_ra')
 @login_required
-@ra_privilege.require()
+@ra_privilege.require(http_exception=403)
 def rcd_or_ra():
     return "Either RCD or RA can access this page"
+
+@app.errorhandler(403)
+def page_not_found(e):
+    return render_template('user/403.html'), 403
 
 if __name__ == '__main__':
     app.run()

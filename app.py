@@ -108,7 +108,7 @@ def new_user():
 # post one on one
 @app.route('/submit_1-1', methods=['POST'])
 def post_1():
-    resident1 = modules.OneonOne(
+    resident1 = modules.one_on_one(
         request.form['resident_first_name'],
         request.form['resident_last_name'],
         request.form['housing'],
@@ -119,7 +119,7 @@ def post_1():
         )
     db.session.add(resident1)
     db.session.commit()
-    return redirect(url_for('home'))
+    return redirect(url_for('dashboard'))
 
 # post new program
 @app.route('/post_program', methods=['POST'])
@@ -130,19 +130,19 @@ def post_program():
         request.form['date'],
         request.form['time'],
         request.form['location'],
+        request.form['description'],
         request.form['primary_sponsor'],
         request.form['secondary_sponsor'],
-        request.form['community'],
         request.form['organizations_involved'],
+        request.form['community'],
         request.form['money_spent'],
-        request.form['description'],
         request.form['implementation'],
         request.form['improvement'],
         request.form['assessment']
         )
     db.session.add(program)
     db.session.commit()
-    return redirect(url_for('home'))
+    return redirect(url_for('dashboard'))
 
 # query programs using search bar
 @app.route('/programs/q=<search>', methods=['GET', 'POST'])

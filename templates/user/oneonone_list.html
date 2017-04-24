@@ -10,37 +10,37 @@
 
 <body>
 
-<div class="container">
-    <div class="row">
-        <div class="input-field">
-          <input id="program_search" type="search" required>
-          <label class="label-icon" for="program_search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
-        </div>
-    </div>
-
-    <div class="show-more">
-        <a href="#">Advanced Search</a>
-    </div>
-
-    <div class="filter hide">
+    <div class="container">
         <div class="row">
-            <div class="input-field col s6">
-              <i class="material-icons prefix">mode_edit</i>
-              <input id="resident_name" name="resident_name" type="text" class="validate">
-              <label for="resident_name">Resident Name</label>
-            </div>
-            <div class="input-field col s6">
-              <i class="material-icons prefix">room</i>
-              <input id="room_number" name="room_number" type="text" class="validate">
-              <label for="room_number">Room Number</label>
+            <div class="input-field">
+                <input id="program_search" type="search" required>
+                <label class="label-icon" for="program_search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
             </div>
         </div>
-    </div>
 
-    <br>
-    <br>
-    <!-- <div class="row">
+        <div class="show-more">
+            <a href="#">Advanced Search</a>
+        </div>
+
+        <div class="filter hide">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <input id="resident_name" name="resident_name" type="text" class="validate">
+                    <label for="resident_name">Resident Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">room</i>
+                    <input id="room_number" name="room_number" type="text" class="validate">
+                    <label for="room_number">Room Number</label>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <!-- <div class="row">
         {% for ra in allRA %}
     	<div class="col s3" style="text-align: center;">
 			<a href="#{{ra.id}}_info"><img class="responsive-img" src="{{ra.profile_image}}" width="300px" height="400px"></a>
@@ -201,8 +201,8 @@
         $('.collapsible').collapsible();
         $('ul.tabs').tabs();
 
-        $(".show-more a").on("click", function() {
-            if($('.show-more a').text() === "Advanced Search"){
+        $(".show-more a").on("click", function () {
+            if ($('.show-more a').text() === "Advanced Search") {
                 $(".filter").removeClass("hide");
                 $('.show-more a').text('Show Less');
             } else {
@@ -215,8 +215,6 @@
         // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
         $('.modal').modal();
     });
-
-
 </script>
 
 </html>

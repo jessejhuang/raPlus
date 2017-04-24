@@ -8,53 +8,115 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="RPDP CMS">
     <meta name="author" content="Justin Guyton, Vish Reddy, Jesse Huang, Danny Weiner">
-    <link rel="stylesheet" href="../../static/css/home.css">
-    {% include 'main/link.html' %}
+    <link rel="stylesheet" href="../../static/css/home.css"> {% include 'main/link.html' %}
 
     <title>Home -- RAplus+</title>
     {% include 'main/nav.html' %}
 </head>
+<style type="text/css">
+    .card .card-content {
+        padding: 10px;
+        border-radius: 0 0 2px 2px;
+    }
+</style>
 
 <body>
-  <!-- Features-->
-  <div class="container grey-text text-darken-2">
-      <!--   Icon Section   -->
-      <div class="container" id="features">
-          <div class="divider-new">
-              <h4 class="center">Hello, {{current_user.first_name}}</h4>
-          </div>
-      </div>
-      <div class="featureList" style="padding-bottom: 75px">
-          <div class="row">
-              <div class="col s12 m4">
-                  <div class="icon-block">
-                      <h2 class="center blue-text text-darken-3"><i class="medium material-icons">grade</i></h2>
-                      <h5 class="center">Recent Programs</h5>
-                      <p class="light center">Record feedback, assess learning outcomes.</p>
 
-                  </div>
-              </div>
+    <div class="row">
+        <div class="col s4">
+            <div class="card">
+                <div class="card-content white-text #43a047 green darken-1">
+                    <span class="card-title">Reminders</span>
+                </div>
+                <ul>
+                    <li>
+                        <div class="card-action">
+                            <input type="checkbox" id="task1">
+                            <label for="task1">Do your shit</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card-action">
+                            <input type="checkbox" id="task2">
+                            <label for="task2">Beat up Tony</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col s8">
+            <p>Upcomming Programs:</p>
+            <div style="height:200px;overflow:auto;">
+                <table class="striped">
+                    <thead class="#039be5 light-blue darken-1">
+                        <tr>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
 
-              <div class="col s12 m4">
-                  <div class="icon-block">
-                      <h2 class="center blue-text text-darken-3"><i class="medium material-icons">payment</i></h2>
-                      <h5 class="center">Floor Budget</h5>
+                    <tbody>
+                        <tr>
+                            <td>Meet your RA's</td>
+                            <td>May 1, 2017</td>
+                            <td>Active</td>
+                            <td>Ligget/Koenig</td>
+                        </tr>
+                        <tr>
+                            <td>Ice Cream with FA</td>
+                            <td>April 22, 2017</td>
+                            <td>Active</td>
+                            <td>SoFoHo Common</td>
+                        </tr>
+                        <tr>
+                            <td>Stress relief nuts</td>
+                            <td>April 28, 2017</td>
+                            <td>Active</td>
+                            <td>K3 Common room</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                      <p class="light center">Manage floor budget, track semester spending.</p>
-                  </div>
-              </div>
-              <div class="col s12 m4">
-                  <div class="icon-block">
-                      <h2 class="center blue-text text-darken-3"><i class="medium material-icons">today</i></h2>
-                      <h5 class="center">Upcoming Events</h5>
+            <p>Recent Programs:</p>
+            <div style="height:200px;overflow:auto;">
+                <table class="striped">
+                    <thead class="#f57f17 yellow darken-4">
+                        <tr>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Skating on Mudd</td>
+                            <td>April 15 1, 2017</td>
+                            <td>Active</td>
+                            <td>Ligget/Koenig</td>
+                        </tr>
+                        <tr>
+                            <td>Self Care Poster</td>
+                            <td>April 10, 2017</td>
+                            <td>Passive</td>
+                            <td>SoFoHo 2</td>
+                        </tr>
+                        <tr>
+                            <td>Java and Java</td>
+                            <td>April 07, 2017</td>
+                            <td>Active</td>
+                            <td>K1 Common room</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-                      <p class="light">Stay up to date with what is going on in the community around you.</p>
-                  </div>
-              </div>
-          </div>
+    </div>
 
-      </div>
-  </div>
 </body>
 
 </html>

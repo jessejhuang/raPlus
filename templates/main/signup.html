@@ -37,12 +37,45 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                          <select name="position" id = 'position'>
-                            <option value="ra">Resident Advisor</option>
-                            <option value="rcd">Residential College Director</option>
+                          <select name="position" id = 'position' onchange="showfield(this.options[this.selectedIndex].value)">
+                            <option value="rcd">RCD</option>
+                            <option value="ra">RA</option>
                           </select>
                           <label>Position</label>
                          </div>
+
+                      <div class = "input-field col s6">
+                        <select name = "residential_college" id = 'rescollege'>
+                            <option value="" disabled selected></option>
+                            <option value="1">Apartments North</option>
+                            <option value="2">Apartments South</option>
+                            <option value="3">Brookings</option>
+                            <option value="4">Hitzeman Hurd and Myers</option>
+                            <option value="5">Lee Beaumont</option>
+                            <option value="6">Liggett Koenig </option>
+                            <option value="7">Park and Mudd</option>
+                            <option value="8">Umrath and South Forty House</option>
+
+                            <option value="9">Shanedling Dauten and Rutledge</option>
+                            <option value="11">The Village</option>
+                            <option value="10">Thomas H. Eliot</option>
+                            <option value="12">Wayman Crow</option>
+                            <option value="13">William Greenleaf Eliot </option>
+                        </select>
+                        <label>Residential College</label>
+                      </div>
+                    </div>
+                    <div class = "row" >
+                      <div class = "input-field col s6" id = "floor">
+                        <select name = "floor" id = "floor_num">
+                          <option value="0">0</option>
+                          <option value="1" selected="">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                        </select>
+                        <label>Floor</label>
+                      </div>
                     </div>
                 </div>
                 <div class="card-action right-align">
@@ -55,7 +88,16 @@
     <script>
     $(document).ready(function() {
       $('select').material_select();
+      $('#floor').hide();
     });
+    function showfield(name){
+      if(name=='ra'){
+        $('#floor').show();
+      }
+      else{
+        $('#floor').hide();
+      }
+    }
     </script>
 
 

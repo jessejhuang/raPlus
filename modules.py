@@ -8,14 +8,17 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True)
     pw_hash = db.Column(db.String(250))
     position = db.Column(db.String(80))
+    floor = db.Column(db.String(3))
+    res_college = db.Column(db.String(3))
     def __init__(
         self,
         first_name,
         last_name,
         email,
         password,
-        position
-
+        position,
+        floor,
+        res_college
     ):
 
         self.first_name = first_name
@@ -23,6 +26,8 @@ class User(db.Model, UserMixin):
         self.email = email
         self.password = password
         self.position = position
+        self.floor = floor
+        self.res_college = res_college
         #UserMixin.__init__(self,roles)
 
     def __repr__(self):

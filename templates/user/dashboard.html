@@ -47,40 +47,33 @@
       <div class="col s8">
         <div class="card">
           <div class="card-content white-text #43a047 blue darken-2">
-              <span class="card-title">Upcoming Programs</span>
+              <span class="card-title">Your Programs</span>
           </div>
           <div style="height:200px;overflow:auto;">
-              <table class="striped">
-                  <thead class="#039be5 grey">
-                      <tr>
-                          <th>Name</th>
-                          <th>Date</th>
-                          <th>Type</th>
-                          <th>Location</th>
-                      </tr>
-                  </thead>
+            <table class="striped">
+             <thead >
+                 <tr>
+                     <th>Program Name</th>
+                     <th>Date</th>
+                     <th>Community</th>
+                     <th>Type of Program</th>
+                 </tr>
+             </thead>
 
-                  <tbody>
-                      <tr>
-                          <td>Meet your RA's</td>
-                          <td>May 1, 2017</td>
-                          <td>Active</td>
-                          <td>Ligget/Koenig</td>
-                      </tr>
-                      <tr>
-                          <td>Ice Cream with FA</td>
-                          <td>April 22, 2017</td>
-                          <td>Active</td>
-                          <td>SoFoHo Common</td>
-                      </tr>
-                      <tr>
-                          <td>Stress relief nuts</td>
-                          <td>April 28, 2017</td>
-                          <td>Active</td>
-                          <td>K3 Common room</td>
-                      </tr>
-                  </tbody>
-              </table>
+             <tbody>
+                 {% for program in your_programs %}
+                 <tr>
+                     <td>{{program.program_name}}</td>
+                     <td>{{program.date.strftime("%B %d, %Y")}}</td>
+                     <td>{{program.location}}</td>
+                     <td>{{program.program_type}}</td>
+                     <td><a href="#{{program.id}}_details">More Details</a></td>
+                 </tr>
+                 {%include 'main/program_card.html' %}
+
+                 {% endfor %}
+             </tbody>
+         </table>
           </div>
         </div>
       </div>
@@ -106,36 +99,30 @@
               <span class="card-title">Recent Programs</span>
             </div>
             <div style="height:200px;overflow:auto;">
-                <table class="striped">
-                    <thead class="#f57f17 grey">
-                        <tr>
-                            <th>Name</th>
-                            <th>Date</th>
-                            <th>Type</th>
-                            <th>Location</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Skating on Mudd</td>
-                            <td>April 15, 2017</td>
-                            <td>Active</td>
-                            <td>Ligget/Koenig</td>
-                        </tr>
-                        <tr>
-                            <td>Self Care Poster</td>
-                            <td>April 10, 2017</td>
-                            <td>Passive</td>
-                            <td>SoFoHo 2</td>
-                        </tr>
-                        <tr>
-                            <td>Java and Java</td>
-                            <td>April 07, 2017</td>
-                            <td>Active</td>
-                            <td>K1 Common room</td>
-                        </tr>
-                    </tbody>
-                </table>
+              <table class="striped">
+               <thead>
+                   <tr>
+                       <th>Program Name</th>
+                       <th>Date</th>
+                       <th>Community</th>
+                       <th>Type of Program</th>
+                   </tr>
+               </thead>
+
+               <tbody>
+                   {% for program in recent_programs %}
+                   <tr>
+                       <td>{{program.program_name}}</td>
+                       <td>{{program.date.strftime("%B %d, %Y")}}</td>
+                       <td>{{program.location}}</td>
+                       <td>{{program.program_type}}</td>
+                       <td><a href="#{{program.id}}_details">More Details</a></td>
+                   </tr>
+
+                   {%include 'main/program_card.html' %}
+                   {% endfor %}
+               </tbody>
+           </table>
             </div>
           </div>
         </div>
@@ -143,5 +130,28 @@
     </div>
 
 </body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('select').material_select();
+        $('.collapsible').collapsible();
+        $('ul.tabs').tabs();
+
+        $(".show-more a").on("click", function () {
+            if ($('.show-more a').text() === "Advanced Search") {
+                $(".filter").removeClass("hide");
+                $('.show-more a').text('Show Less');
+            } else {
+                $(".filter").addClass("hide");
+                $('.show-more a').text('Advanced Search');
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal();
+    });
+</script>
+
 
 </html>

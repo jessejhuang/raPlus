@@ -1,5 +1,5 @@
 from app import *
-
+from datetime import datetime
 # registering users into database
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -43,12 +43,12 @@ class Program(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     program_name = db.Column(db.String(80))
     program_type = db.Column(db.String(80))
-    date = db.Column(db.String(30))
+    date = db.Column(db.DateTime)
     time = db.Column(db.String(10))
     location = db.Column(db.String(80))
     description = db.Column(db.String(500))
-    primary_sponsor = db.Column(db.String(50))
-    secondary_sponsor = db.Column(db.String(50))
+    owner_first_name = db.Column(db.String(80))
+    owner_last_name = db.Column(db.String(80))
     organizations_involved = db.Column(db.String(50))
     community = db.Column(db.String(50))
     money_spent = db.Column(db.String(30))
@@ -65,8 +65,8 @@ class Program(db.Model):
         time,
         location,
         description,
-        primary_sponsor,
-        secondary_sponsor,
+        owner_first_name,
+        owner_last_name,
         organizations_involved,
         community,
         money_spent,
@@ -81,8 +81,8 @@ class Program(db.Model):
         self.time = time
         self.location = location
         self.description = description
-        self.primary_sponsor = primary_sponsor
-        self.secondary_sponsor = secondary_sponsor
+        self.owner_first_name = owner_first_name
+        self.owner_last_name = owner_last_name
         self.organizations_involved = organizations_involved
         self.community = community
         self.money_spent = money_spent
@@ -99,7 +99,7 @@ class one_on_one(db.Model):
     resident_first_name = db.Column(db.String(80))
     resident_last_name = db.Column(db.String(80))
     room_number = db.Column(db.String(10))
-    date = db.Column(db.String(30))
+    date = db.Column(db.DateTime)
     notes = db.Column(db.String(1000))
     floor = db.Column(db.String(3))
     res_college = db.Column(db.String(3))

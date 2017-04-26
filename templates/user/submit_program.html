@@ -21,9 +21,8 @@
       <!--Tab Bar-->
       <ul id="program_tabs" class="tabs tabs-fixed-width">
         <li class="tab col s3"><a href="#program-swipe-1">Fundamentals</a></li>
-        <li class="tab col s3"><a href="#program-swipe-2">Sponsors &amp; Budget</a></li>
-        <li class="tab col s3"><a href="#program-swipe-3">Description &amp; Outcomes</a></li>
-        <li class="tab col s3"><a href="#program-swipe-4">Assessment &amp; Submit</a></li>
+        <li class="tab col s3"><a href="#program-swipe-2">Description </a></li>
+        <li class="tab col s3"><a href="#program-swipe-3">Assessment &amp; Submit</a></li>
       </ul>
 
       <form class="col s12" method="post" action="/post_program">
@@ -43,11 +42,13 @@
             </div>
             <div class="row">
                 <div class="input-field col s6">
+                  <br />
                   <i class="material-icons prefix">today</i>
-                  <input id="date" name="date" type="text" class="validate" placeholder="03/27/2017">
+                  <input id="date" name="date" type="date" class="validate datepicker">
                   <label for="date">Date</label>
                 </div>
                 <div class="input-field col s6">
+                  <br />
                   <i class="material-icons prefix">schedule</i>
                   <input id="time" name="time" type="text" class="validate" placeholder="12:00pm">
                   <label for="time">Time</label>
@@ -98,9 +99,6 @@
                     <label for="student_type">Students Involved</label>
                 </div> -->
             </div>
-            <!-- <a href="#program-swipe-2" id="swipe-1-next-button" class="btn-large waves-effect waves-light  blue darken-3">Next</a> -->
-          </div>
-        <div id="program-swipe-2" class="col s12">
             <div class="row">
                 <div class="input-field col s6">
                   <i class="material-icons prefix">store</i>
@@ -113,54 +111,44 @@
                   <label for="money_spent">Money Spent</label>
                 </div>
             </div>
-            <div class="row">
-                <div class="input-field col s6">
-                  <i class="material-icons prefix">group_work</i>
-                  <input id="primary_sponsor" name="primary_sponsor" type="text" class="validate">
-                  <label for="primary_sponsor">Primary Sponsor</label>
-                </div>
-                <div class="input-field col s6">
-                  <i class="material-icons prefix">group_work</i>
-                  <input id="secondary_sponsor" name="secondary_sponsor" type="text" class="validate">
-                  <label for="secondary_sponsor">Secondary Sponsor</label>
-                </div>
-            </div>
+            <!-- <a href="#program-swipe-2" id="swipe-1-next-button" class="btn-large waves-effect waves-light  blue darken-3">Next</a> -->
+          </div>
+        <div id="program-swipe-2" class="col s12">
+          <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">info_outline</i>
+                <textarea id="description" name="description" class="materialize-textarea" required></textarea>
+                <label for="description">Description &amp; Learning Outcomes</label>
+              </div>
+          </div>
             <!-- <a href="#program-swipe-3" id="swipe-2-next-button" class="btn-large waves-effect waves-light  blue darken-3">Next</a> -->
         </div>
+
         <div id="program-swipe-3" class="col s12">
-            <div class="row">
-                <div class="input-field col s12">
-                  <i class="material-icons prefix">info_outline</i>
-                  <textarea id="description" name="description" class="materialize-textarea" required></textarea>
-                  <label for="description">Description &amp; Learning Outcomes</label>
-                </div>
-            </div>
+          <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">done_all</i>
+                <textarea id="implementation" name="implementation" class="materialize-textarea"></textarea>
+                <label for="implementation">What went well with planning and implementation?</label>
+              </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">trending_up</i>
+                <textarea id="improvement" name="improvement" class="materialize-textarea"></textarea>
+                <label for="improvement">What could be improved?</label>
+              </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">assessment</i>
+                <textarea id="assessment" name="assessment" class="materialize-textarea"></textarea>
+                <label for="assessment">How was the program assessed?</label>
+              </div>
+          </div>
+          <input type="submit" name="submit" class="btn waves-effect waves-green blue darken-3" />
+          <button class="btn waves-effect waves-red blue darken-3" type="reset" name="/submit">Reset</button>
             <!-- <a href="#program-swipe-4" id="swipe-3-next-button" class="btn-large waves-effect waves-light  blue darken-3">Next</a> -->
-        </div>
-        <div id="program-swipe-4" class="col s12">
-            <div class="row">
-                <div class="input-field col s12">
-                  <i class="material-icons prefix">done_all</i>
-                  <textarea id="implementation" name="implementation" class="materialize-textarea"></textarea>
-                  <label for="implementation">What went well with planning and implementation?</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                  <i class="material-icons prefix">trending_up</i>
-                  <textarea id="improvement" name="improvement" class="materialize-textarea"></textarea>
-                  <label for="improvement">What could be improved?</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                  <i class="material-icons prefix">assessment</i>
-                  <textarea id="assessment" name="assessment" class="materialize-textarea"></textarea>
-                  <label for="assessment">How was the program assessed?</label>
-                </div>
-            </div>
-            <input type="submit" name="submit" class="btn waves-effect waves-green blue darken-3" />
-            <button class="btn waves-effect waves-red blue darken-3" type="reset" name="/submit">Reset</button>
         </div>
     </form>
   </div>
@@ -180,6 +168,7 @@
         //  swipeable:true
       });
     });
+
 </script>
 
 </html>

@@ -57,9 +57,11 @@ def redirect_to_login():
 
 
 @app.route('/dashboard')
-#@login_required
+@login_required
 def dashboard():
-    return render_template('user/dashboard.html')
+    your_programs = modules.Program.query.filter(modules.Program.owner_first_name == current_user.first_name, modules.Program.owner_last_name == current_user.last_name )
+    recent_programs = modules.Program.query.order_by(modules.Program.date.desc() ).limit(5).all()
+    return render_template('user/dashboard.html', your_programs = your_programs, recent_programs = recent_programs)
 
 @app.route('/features')
 def features():
@@ -135,8 +137,8 @@ def post_program():
         request.form['time'],
         request.form['location'],
         request.form['description'],
-        request.form['primary_sponsor'],
-        request.form['secondary_sponsor'],
+        current_user.first_name,
+        current_user.last_name,
         request.form['organizations_involved'],
         request.form['community'],
         request.form['money_spent'],
@@ -158,18 +160,20 @@ def programs(search):
 def one_on_one(search):
     if(current_user.position=='ra'):
         OneonOneList = modules.one_on_one.query.filter(modules.one_on_one.resident_last_name.contains(search), modules.one_on_one.res_college == current_user.res_college, modules.one_on_one.floor == current_user.floor )
-        OneonOneList.append(modules.one_on_one.query.filter(modules.one_on_one.resident_first_name.contains(search), modules.one_on_one.res_college == current_user.res_college, modules.one_on_one.floor == current_user.floor )  )
+        #OneonOneList.append(modules.one_on_one.query.filter(modules.one_on_one.resident_first_name.contains(search), modules.one_on_one.res_college == current_user.res_college, modules.one_on_one.floor == current_user.floor )  )
     else:
         OneonOneList = modules.one_on_one.query.filter(modules.one_on_one.resident_last_name.contains(search), modules.one_on_one.res_college == current_user.res_college)
-        OneonOneList.append(modules.one_on_one.query.filter(modules.one_on_one.resident_first_name.contains(search), modules.one_on_one.res_college == current_user.res_college )  )
+        #OneonOneList.append(modules.one_on_one.query.filter(modules.one_on_one.resident_first_name.contains(search), modules.one_on_one.res_college == current_user.res_college )  )
 
-    return render_template('user/oneonone_list.html')
+    return render_template('user/oneonone_list.html', OneonOneList = OneonOneList)
 
 # query programs
 @app.route('/programs')
 def all_program():
     allPrograms = modules.Program.query.all()
     return render_template('user/programs_list.html', allPrograms = allPrograms)
+
+
 
 # query OneonOnes
 @app.route('/OneonOne')
@@ -219,7 +223,7 @@ def load_user(user_id):
     return modules.User.query.get(int(user_id))
 
 @app.route('/logout')
-#@login_required
+@login_required
 def logout():
     logout_user()
     for key in ('identity.name', 'identity.auth_type'):
@@ -231,13 +235,13 @@ def logout():
     return redirect(request.args.get('next') or '/')
 
 @app.route('/rcd_only')
-#@login_required
+@login_required
 @rcd_privilege.require(http_exception=403)
 def rcd_only():
     return "For RCD only"
 
 @app.route('/rcd_or_ra')
-#@login_required
+@login_required
 @ra_privilege.require(http_exception=403)
 def rcd_or_ra():
     return "Either RCD or RA can access this page"

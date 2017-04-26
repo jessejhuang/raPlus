@@ -115,11 +115,11 @@ def post_1():
     resident1 = modules.one_on_one(
         request.form['resident_first_name'],
         request.form['resident_last_name'],
-        request.form['housing'],
         request.form['room_number'],
-        request.form['recommended_resources'],
-        request.form['concerns'],
-        request.form['notes']
+        request.form['date'],
+        request.form['notes'],
+        current_user.floor,
+        current_user.res_college
         )
     db.session.add(resident1)
     db.session.commit()
@@ -154,6 +154,17 @@ def programs(search):
     allPrograms = modules.Program.query.filter(modules.Program.program_name.contains(search))
     return render_template('user/programs_list.html', allPrograms = allPrograms)
 
+@app.route('/one_on_one/q=<search>', methods = ['GET', 'POST'])
+def one_on_one(search):
+    if(current_user.position=='ra'):
+        OneonOneList = modules.one_on_one.query.filter(modules.one_on_one.resident_last_name.contains(search), modules.one_on_one.res_college == current_user.res_college, modules.one_on_one.floor == current_user.floor )
+        OneonOneList.append(modules.one_on_one.query.filter(modules.one_on_one.resident_first_name.contains(search), modules.one_on_one.res_college == current_user.res_college, modules.one_on_one.floor == current_user.floor )  )
+    else:
+        OneonOneList = modules.one_on_one.query.filter(modules.one_on_one.resident_last_name.contains(search), modules.one_on_one.res_college == current_user.res_college)
+        OneonOneList.append(modules.one_on_one.query.filter(modules.one_on_one.resident_first_name.contains(search), modules.one_on_one.res_college == current_user.res_college )  )
+
+    return render_template('user/oneonone_list.html')
+
 # query programs
 @app.route('/programs')
 def all_program():
@@ -163,7 +174,11 @@ def all_program():
 # query OneonOnes
 @app.route('/OneonOne')
 def OneonOne():
-    OneonOneList = modules.Program.query.all()
+    if(current_user.position=='ra'):
+        OneonOneList = modules.one_on_one.query.filter(modules.one_on_one.res_college == current_user.res_college, modules.one_on_one.floor == current_user.floor )
+    else:
+        OneonOneList = modules.one_on_one.query.filter(modules.one_on_one.res_college == current_user.res_college)
+
     return render_template('user/oneonone_list.html', OneonOneList = OneonOneList)
 
 # query ra using search bar

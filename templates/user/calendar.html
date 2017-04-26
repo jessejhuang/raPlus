@@ -2,13 +2,305 @@
 <html lang="en">
 
 <head>
-    {% include 'main/link.html' %}
-
-    <title>Home -- RAplus+</title>
+    <link rel="stylesheet" href="../../static/css/programs.css"> {% include 'main/link.html' %}
+    <title>Calendar</title>
     {% include 'main/nav.html' %}
 </head>
 
 <body>
+	<div id = "calendar-head-icon">
+		<img src="https://maxcdn.icons8.com/Share/icon/Time_And_Date//calendar1600.png" alt="Calendar" style="width:130px;height:130px;">
+	</div>
+	<div class="month"> 
+  <ul>
+    <li class="prev"><input type="button" class="button" onclick="prevMonth()" id="previous_month" value="<"></input></li>
+    <li class="next"><input type="button" class="button" onclick="nextMonth()"  id="next_month" value=">"></input></li>
+    <li>
+      <span style="font-size:25px"><div id="month_chosen">May</div> 2017</span>
+    </li>
+  </ul>
+</div>
+
+
+<ul class="days"> 
+  <li><span class="active">1</span></li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+  <li>6</li>
+  <li>7</li>
+  <li>8</li>
+  <li>9</li>
+  <li>10</li>
+  <li>11</li>
+  <li>12</li>
+  <li>13</li>
+  <li>14</li>
+  <li>15</li>
+  <li>16</li>
+  <li>17</li>
+  <li>18</li>
+  <li>19</li>
+  <li>20</li>
+  <li>21</li>
+  <li>22</li>
+  <li>23</li>
+  <li>24</li>
+  <li>25</li>
+  <li>26</li>
+  <li>27</li>
+  <t id="extra_days">
+  <li>28</li>
+  <li>29</li>
+  <li>30</li>
+  <li>31</li>
+  </div>
+  </ul>
+
+<div class="day-sort"> 
+  <ul>
+    <li>
+      <span style="font-size:18px">Upcoming Events For <t id="month_name">May</div></span>
+    </li>
+  </ul>
+</div>
+
+
+<table>
+	<tr>
+    <th>Event Name</th>
+    <th>Event Time</th> 
+    <th>Event Location</th>
+  	</tr>
+	<tr>
+    <td id="event_name_1">Snowball Fight</td>
+    <td id="event_time_1">Tuesday, 11 May</td> 
+    <td id="event_location_1">Dauten</td>
+  	</tr>
+	<tr>
+    <td id="event_name_2">Building Laser Tag</td>
+    <td id="event_time_2">Saturday, 10 May</td> 
+    <td id="event_location_2">Umrath</td>
+  	</tr>
+</table>
+
+<table id = "results_table"><div id="events_list"></div></table>
 </body>
+
+
+<script type="text/javascript">
+var eventTitles = ["Baking with Residents", "Bowling with Faculty Fellow", "Secret Santa", "Sports and Arcade Games", "Snowball Fight", "Learn Financial Planning", "Cooking with Residents", "Ibby's Night", "Trivia Night", "Resume-Building Night", "Racial Justice Training", "IM Sports Evening", "Building Laser Tag"]
+var eventMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'May'];
+var eventDay= ["Sunday, 13", "Friday, 9", "Saturday, 26", "Monday, 1", "Tuesday, 11", "Sunday, 15", "Thursday, 20", "Monday, 1", "Thursday, 18", "Wednesday, 20", "Wednesday, 15", "Saturday, 10", "Saturday, 10"];
+var eventLocation =  ["Koenig", "Shanedling", "Nemerov", "Park", "Dauten", "SoFoHo", "Rutledge", "Mudd", "Dardick", "Liggett", "Eliot A", "Eliot B", "Umrath"]
+
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var days = [31,28,31,30,31,30,31,31,30,31,30,31];
+var index = 4;
+var chosenMonth = months[4];
+var chosenDays = days[4];
+var usedString = "";
+
+function prevMonth(){
+	var eventExist = false;
+	usedString = "";
+	if (index != 0){
+		index = index-1;
+	}
+	else{
+		index = 11;
+	}
+	chosenMonth = months[index];
+	chosenDays = days[index];
+	document.getElementById("month_chosen").innerHTML = chosenMonth;
+	document.getElementById("month_name").innerHTML = chosenMonth;
+	if (chosenDays == 30){
+		document.getElementById("extra_days").innerHTML = "<li>28</li><li>29</li><li>30</li>";
+	}
+	if (chosenDays == 31){
+		document.getElementById("extra_days").innerHTML = "<li>28</li><li>29</li><li>30</li><li>31</li>";
+	}
+	if (chosenDays == 28){
+		document.getElementById("extra_days").innerHTML = "<li>28</li>";
+	}
+	for(count = 0; count < 13; count++){
+          if (eventMonths[count] == months[index]){
+          		if (eventExist != true){
+          			document.getElementById("event_name_1").innerHTML = eventTitles[count];
+          			document.getElementById("event_time_1").innerHTML = eventDay[count] + " " + eventMonths[count];
+          			document.getElementById("event_location_1").innerHTML = eventLocation[count];
+          			eventExist = true;
+          		}
+          		else{
+          			document.getElementById("event_name_2").innerHTML = eventTitles[count];
+          			document.getElementById("event_time_2").innerHTML = eventDay[count] + " " + eventMonths[count];
+          			document.getElementById("event_location_2").innerHTML = eventLocation[count];
+          		}
+          }
+    }
+    eventExist = true;
+}
+
+function nextMonth(){
+	var eventExist = false;
+	usedString = "";
+	if (index != 11){
+		index = index+1;
+	}
+	else{
+		index = 0;
+	}
+	chosenMonth = months[index];
+	chosenDays = days[index];
+	document.getElementById("month_chosen").innerHTML = chosenMonth;
+	document.getElementById("month_name").innerHTML = chosenMonth;
+	if (chosenDays == 30){
+		document.getElementById("extra_days").innerHTML = "<li>28</li><li>29</li><li>30</li>";
+	}
+	if (chosenDays == 31){
+		document.getElementById("extra_days").innerHTML = "<li>29</li><li>29</li><li>30</li><li>31</li>";
+	}
+	for(count = 0; count < 13; count++){
+          if (eventMonths[count] == months[index]){
+          		if (eventExist != true){
+          			document.getElementById("event_name_2").innerHTML = "";
+          			document.getElementById("event_time_2").innerHTML = "";
+          			document.getElementById("event_location_2").innerHTML = "";
+          			document.getElementById("event_name_1").innerHTML = eventTitles[count];
+          			document.getElementById("event_time_1").innerHTML = eventDay[count] + " " + eventMonths[count];
+          			document.getElementById("event_location_1").innerHTML = eventLocation[count];
+          			eventExist = true;
+          		}
+          		else{
+          			document.getElementById("event_name_2").innerHTML = eventTitles[count];
+          			document.getElementById("event_time_2").innerHTML = eventDay[count] + " " + eventMonths[count];
+          			document.getElementById("event_location_2").innerHTML = eventLocation[count];
+          		}
+          }
+    }
+    eventExist = true;
+}
+
+</script>
+<style>
+#calendar-head-icon { 
+    display: block;
+    margin: auto;
+    width: 10%;
+}
+
+ul {list-style-type: none;}
+body {font-family: Verdana, sans-serif;}
+
+/* Month header */
+.month {
+    padding: 20px 25px;
+    width: 100%;
+    background: #000000;
+}
+
+/* Month list */
+.month ul {
+    margin: 0;
+    padding: 0;
+}
+
+.month ul li {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+/* Previous button inside month header */
+.month .prev {
+    float: left;
+}
+
+/* Next button */
+.month .next {
+    float: right;
+}
+
+/* Weekdays (Mon-Sun) */
+.weekdays {
+    margin: 0;
+    padding: 10px 0;
+    background-color:#ddd;
+}
+
+.weekdays li {
+    display: inline-block;
+    width: 13.6%;
+    color: #666;
+    text-align: center;
+}
+
+/* Days (1-31) */
+.days {
+    padding: 10px 0;
+    background: #eee;
+    margin: 0;
+}
+
+.days li {
+    list-style-type: none;
+    display: inline-block;
+    width: 13.6%;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size:12px;
+    color:#777;
+}
+
+/* Highlight the "current" day */
+.days li .active {
+    padding: 5px;
+    background: #000000;
+    color: white !important
+}
+
+/* Day sort header */
+.day-sort {
+    padding: 0px 25px;
+    width: 100%;
+    background: #000000;
+}
+
+/* Day sort list */
+.day-sort ul {
+    margin: 0;
+    padding: 5px;
+}
+
+.day-sort ul li {
+    color: white;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+/* Previous button inside day-sort header */
+.day-sort .prev {
+    float: left;
+}
+
+/* Day-sort next button */
+.day-sort .next {
+    float: right;
+}
+
+th, td {
+    padding: 20px;
+}
+
+.button {
+    background-color: #000000;
+}
+
+</style>
 
 </html>

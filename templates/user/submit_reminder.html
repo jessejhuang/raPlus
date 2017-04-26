@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include 'main/link.html' %}
+
+    <title>Submit Reminder</title>
+    {% include 'main/nav.html' %}
+</head>
+
+<body>
+    <div class="container">
+        <h5>Submit Reminder</h5>
+        <div class="row card-panel">
+            <form class="col s12" method="post" action="/submit_reminder">
+                  <div class="input-field col s12">
+                      <input id="reminder" name="reminder" type="text" class="validate">
+                      <label for="reminder">Reminder</label>
+                  </div>
+                <input type="submit" name="submit" class="waves-effect waves-light btn blue darken-3"/>
+                <button class="btn waves-effect waves-red blue darken-3" type="reset" name="/submit">Reset</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

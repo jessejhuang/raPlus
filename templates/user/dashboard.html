@@ -23,67 +23,91 @@
 <body>
 
     <div class="row">
-        <div class="col s4">
-            <div class="card">
-                <div class="card-content white-text #43a047 green darken-1">
-                    <span class="card-title">Reminders</span>
-                </div>
-                <ul>
-                    <li>
-                        <div class="card-action"> 
-                            <input type="checkbox" id="task1">
-                            <label for="task1">Do your shit</label>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="card-action">
-                            <input type="checkbox" id="task2">
-                            <label for="task2">Beat up Tony</label>
-                        </div>
-                    </li>
-                </ul>
+      <div class="col s4">
+        <div class="card">
+            <div class="card-content white-text #43a047 green darken-1">
+              <span class="card-title">To-Do</span>
             </div>
+            <ul>
+              <li>
+                  <div class="card-action">
+                      <input type="checkbox" id="task1">
+                      <label for="task1">Task1</label>
+                  </div>
+              </li>
+              <li>
+                  <div class="card-action">
+                      <input type="checkbox" id="task2">
+                      <label for="task2">Task2</label>
+                  </div>
+              </li>
+            </ul>
+        </div>
+      </div>
+      <div class="col s8">
+        <div class="card">
+          <div class="card-content white-text #43a047 blue darken-2">
+              <span class="card-title">Upcoming Programs</span>
+          </div>
+          <div style="height:200px;overflow:auto;">
+              <table class="striped">
+                  <thead class="#039be5 grey">
+                      <tr>
+                          <th>Name</th>
+                          <th>Date</th>
+                          <th>Type</th>
+                          <th>Location</th>
+                      </tr>
+                  </thead>
+
+                  <tbody>
+                      <tr>
+                          <td>Meet your RA's</td>
+                          <td>May 1, 2017</td>
+                          <td>Active</td>
+                          <td>Ligget/Koenig</td>
+                      </tr>
+                      <tr>
+                          <td>Ice Cream with FA</td>
+                          <td>April 22, 2017</td>
+                          <td>Active</td>
+                          <td>SoFoHo Common</td>
+                      </tr>
+                      <tr>
+                          <td>Stress relief nuts</td>
+                          <td>April 28, 2017</td>
+                          <td>Active</td>
+                          <td>K3 Common room</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s4">
+          <div class="card">
+            <div class="card-content white-text #43a047 yellow darken-2">
+              <span class="card-title">Announcements</span>
+            </div>
+            <ul class="collection">
+              <li class="collection-item">
+                <p>Staff meeting tonight!</p>
+              </li>
+              <li class="collection-item">
+                <p>Contracts end on 5/21</p>
+              </li>
+            </ul>
+          </div>
         </div>
         <div class="col s8">
-            <p>Upcomming Programs:</p>
-            <div style="height:200px;overflow:auto;">
-                <table class="striped">
-                    <thead class="#039be5 light-blue darken-1">
-                        <tr>
-                            <th>Name</th>
-                            <th>Date</th>
-                            <th>Type</th>
-                            <th>Location</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>Meet your RA's</td>
-                            <td>May 1, 2017</td>
-                            <td>Active</td>
-                            <td>Ligget/Koenig</td>
-                        </tr>
-                        <tr>
-                            <td>Ice Cream with FA</td>
-                            <td>April 22, 2017</td>
-                            <td>Active</td>
-                            <td>SoFoHo Common</td>
-                        </tr>
-                        <tr>
-                            <td>Stress relief nuts</td>
-                            <td>April 28, 2017</td>
-                            <td>Active</td>
-                            <td>K3 Common room</td>
-                        </tr>
-                    </tbody>
-                </table>
+          <div class="card">
+            <div class="card-content white-text #43a047 red darken-2">
+              <span class="card-title">Recent Programs</span>
             </div>
-
-            <p>Recent Programs:</p>
             <div style="height:200px;overflow:auto;">
                 <table class="striped">
-                    <thead class="#f57f17 yellow darken-4">
+                    <thead class="#f57f17 grey">
                         <tr>
                             <th>Name</th>
                             <th>Date</th>
@@ -94,7 +118,7 @@
                     <tbody>
                         <tr>
                             <td>Skating on Mudd</td>
-                            <td>April 15 1, 2017</td>
+                            <td>April 15, 2017</td>
                             <td>Active</td>
                             <td>Ligget/Koenig</td>
                         </tr>
@@ -113,8 +137,9 @@
                     </tbody>
                 </table>
             </div>
+          </div>
         </div>
-
+      </div>
     </div>
 
 </body>

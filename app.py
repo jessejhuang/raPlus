@@ -57,7 +57,7 @@ def redirect_to_login():
 
 
 @app.route('/dashboard')
-@login_required
+#@login_required
 def dashboard():
     return render_template('user/dashboard.html')
 
@@ -80,6 +80,10 @@ def submit():
 @app.route('/submit_1-1')
 def submit1():
     return render_template('user/submit_1-1.html')
+
+@app.route('/submit_reminder')
+def submit2():
+    return render_template('user/submit_reminder.html')
 
 @app.route('/calendar')
 def calendar():
@@ -199,7 +203,7 @@ def load_user(user_id):
     return modules.User.query.get(int(user_id))
 
 @app.route('/logout')
-@login_required
+#@login_required
 def logout():
     logout_user()
     for key in ('identity.name', 'identity.auth_type'):
@@ -211,13 +215,13 @@ def logout():
     return redirect(request.args.get('next') or '/')
 
 @app.route('/rcd_only')
-@login_required
+#@login_required
 @rcd_privilege.require(http_exception=403)
 def rcd_only():
     return "For RCD only"
 
 @app.route('/rcd_or_ra')
-@login_required
+#@login_required
 @ra_privilege.require(http_exception=403)
 def rcd_or_ra():
     return "Either RCD or RA can access this page"

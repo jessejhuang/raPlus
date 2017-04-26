@@ -95,14 +95,14 @@ def new_user():
         request.form['last_name'],
         request.form['email'],
         request.form['password'],
-        request.form['position']
+        request.form['position'],
+        request.form['floor'],
+        request.form['residential_college']
         )
 
     user.set_password(user.password)
     db.session.add(user)
     db.session.commit()
-    print(request.form['position'], file=sys.stderr)
-    print("Trying to print position", file=sys.stderr)
     return redirect(request.args.get('next') or '/')
 
 # post one on one
@@ -210,19 +210,6 @@ def logout():
     identity_changed.send(current_app._get_current_object(), identity=AnonymousIdentity())
     print("You have been logged out ", file=sys.stderr)
     return redirect(request.args.get('next') or '/')
-
-@app.route('/hummus')
-@login_required
-def hummus():
-    return "The current user is " + current_user.last_name
-
-@app.route('/test_log')
-def test_log():
-    x = 'jessehuang@wustl.edu'
-    user = modules.User.query.filter_by(email=x).first()
-    print(user.first_name, file=sys.stderr)
-    login_user(user)
-    return user.last_name + " Was logged in"
 
 @app.route('/rcd_only')
 @login_required

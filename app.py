@@ -111,11 +111,10 @@ def post_1():
     resident1 = modules.one_on_one(
         request.form['resident_first_name'],
         request.form['resident_last_name'],
-        request.form['housing'],
         request.form['room_number'],
-        request.form['recommended_resources'],
-        request.form['concerns'],
-        request.form['notes']
+        request.form['notes'],
+        current_user.floor,
+        current_user.res_college
         )
     db.session.add(resident1)
     db.session.commit()

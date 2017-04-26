@@ -98,30 +98,27 @@ class one_on_one(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     resident_first_name = db.Column(db.String(80))
     resident_last_name = db.Column(db.String(80))
-    housing = db.Column(db.String(80))
     room_number = db.Column(db.String(10))
-    recommended_resources = db.Column(db.String(300))
-    concerns = db.Column(db.String(300))
     notes = db.Column(db.String(1000))
+    floor = db.Column(db.String(3))
+    res_college = db.Column(db.String(3))
 
     def __init__(
         self,
         resident_first_name,
         resident_last_name,
-        housing,
         room_number,
-        recommended_resources,
-        concerns,
-        notes
+        notes,
+        floor,
+        res_college
     ):
 
         self.resident_first_name = resident_first_name
         self.resident_last_name = resident_last_name
-        self.housing = housing
         self.room_number = room_number
-        self.recommended_resources = recommended_resources
-        self.concerns = concerns
         self.notes = notes
+        self.floor = floor
+        self.res_college = res_college
 
     def __repr__(self):
         return '<Name %r>' % self.resident_first_name

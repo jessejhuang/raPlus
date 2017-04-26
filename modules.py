@@ -99,6 +99,7 @@ class one_on_one(db.Model):
     resident_first_name = db.Column(db.String(80))
     resident_last_name = db.Column(db.String(80))
     room_number = db.Column(db.String(10))
+    date = db.Column(db.String(30))
     notes = db.Column(db.String(1000))
     floor = db.Column(db.String(3))
     res_college = db.Column(db.String(3))
@@ -108,6 +109,7 @@ class one_on_one(db.Model):
         resident_first_name,
         resident_last_name,
         room_number,
+        date,
         notes,
         floor,
         res_college
@@ -116,6 +118,7 @@ class one_on_one(db.Model):
         self.resident_first_name = resident_first_name
         self.resident_last_name = resident_last_name
         self.room_number = room_number
+        self.date = date
         self.notes = notes
         self.floor = floor
         self.res_college = res_college

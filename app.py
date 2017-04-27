@@ -16,7 +16,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['postgresql://postgres@localhost/raPlus']
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-
+# 
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres@localhost/raPlus'
 
 #import modules after init app

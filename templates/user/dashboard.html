@@ -22,8 +22,45 @@
 
 <body>
 
+<<<<<<< HEAD
     <div class="row">
       
+=======
+    <div class="container row">
+     <div class="col s6">
+          <div class="card">
+            <div class="card-content white-text #43a047 red darken-2">
+              <span class="card-title">Recent Programs</span>
+            </div>
+            <div style="height:500px;overflow:auto;">
+              <table class="striped">
+               <thead>
+                   <tr>
+                       <th>Program Name</th>
+                       <th>Date</th>
+                       <th>Community</th>
+                       <th>Type of Program</th>
+                   </tr>
+               </thead>
+
+               <tbody>
+                   {% for program in recent_programs %}
+                   <tr>
+                       <td>{{program.program_name}}</td>
+                       <td>{{program.date.strftime("%B %d, %Y")}}</td>
+                       <td>{{program.location}}</td>
+                       <td>{{program.program_type}}</td>
+                       <td><a href="#recent_{{program.id}}_details">More Details</a></td>
+                   </tr>
+
+                   {%include 'main/recent_program_card.html' %}
+                   {% endfor %}
+               </tbody>
+           </table>
+            </div>
+          </div>
+        </div>
+>>>>>>> d515ab53f9a4cf4c2628ed22cf3dad86e1a166a8
 
       <div class="col s6">
         <div class="card">
@@ -58,6 +95,7 @@
           </div>
         </div>
       </div>
+<<<<<<< HEAD
       <div class="row">
         
         <div class="col s6">
@@ -75,25 +113,10 @@
                        <th>Type of Program</th>
                    </tr>
                </thead>
+=======
+>>>>>>> d515ab53f9a4cf4c2628ed22cf3dad86e1a166a8
 
-               <tbody>
-                   {% for program in recent_programs %}
-                   <tr>
-                       <td>{{program.program_name}}</td>
-                       <td>{{program.date.strftime("%B %d, %Y")}}</td>
-                       <td>{{program.location}}</td>
-                       <td>{{program.program_type}}</td>
-                       <td><a href="#recent_{{program.id}}_details">More Details</a></td>
-                   </tr>
-
-                   {%include 'main/recent_program_card.html' %}
-                   {% endfor %}
-               </tbody>
-           </table>
-            </div>
-          </div>
-        </div>
-      </div>
+      
     </div>
 
 </body>

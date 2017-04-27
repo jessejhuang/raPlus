@@ -11,7 +11,8 @@
 	<div id = "calendar-head-icon">
 		<img src="https://maxcdn.icons8.com/Share/icon/Time_And_Date//calendar1600.png" alt="Calendar" style="width:130px;height:130px;">
 	</div>
-	<div class="month"> 
+	
+    <div id="container"><div class="month"> 
   <ul>
     <li class="prev"><input type="button" class="button" onclick="prevMonth()" id="previous_month" value="<"></input></li>
     <li class="next"><input type="button" class="button" onclick="nextMonth()"  id="next_month" value=">"></input></li>
@@ -21,9 +22,17 @@
   </ul>
 </div>
 
-
+<ul id="weekday_bar" class="weekdays">
+  <li>Mon</li>
+  <li>Tue</li>
+  <li>Wed</li>
+  <li>Thu</li>
+  <li>Fri</li>
+  <li>Sat</li>
+  <li>Sun</li>
+</ul>
 <ul class="days"> 
-  <li><span class="active">1</span></li>
+  <li>1</li>
   <li>2</li>
   <li>3</li>
   <li>4</li>
@@ -85,11 +94,13 @@
   	</tr>
 </table>
 
-<table id = "results_table"><div id="events_list"></div></table>
+<table id = "results_table"><div id="events_list"></div></div></table>
 </body>
 
 
 <script type="text/javascript">
+var daysOfMonth = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+var correspondingDayOfMonth = ["Sun", "Wed", "Wed", "Sat", "Mon", "Thu", "Sat", "Tue", "Fri", "Sun", "Wed", "Fri"]
 var eventTitles = ["Baking with Residents", "Bowling with Faculty Fellow", "Secret Santa", "Sports and Arcade Games", "Snowball Fight", "Learn Financial Planning", "Cooking with Residents", "Ibby's Night", "Trivia Night", "Resume-Building Night", "Racial Justice Training", "IM Sports Evening", "Building Laser Tag"]
 var eventMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'May'];
 var eventDay= ["Sunday, 13", "Friday, 9", "Saturday, 26", "Monday, 1", "Tuesday, 11", "Sunday, 15", "Thursday, 20", "Monday, 1", "Thursday, 18", "Wednesday, 20", "Wednesday, 15", "Saturday, 10", "Saturday, 10"];
@@ -140,6 +151,12 @@ function prevMonth(){
           }
     }
     eventExist = true;
+    var i = 0;
+    while (daysOfMonth[i] != correspondingDayOfMonth[index]){
+    	i = i+1;
+    }
+    console.log(i);
+    document.getElementById("weekday_bar").innerHTML = "<li>" + daysOfMonth[i] + "</li><li>" + daysOfMonth[i+1] + "</li><li>" + daysOfMonth[i+2] + "</li><li>" + daysOfMonth[i+3] + "</li><li>" + daysOfMonth[i+4] + "</li><li>" + daysOfMonth[i+5] + "</li><li>" + daysOfMonth[i+6] + "</li>";
 }
 
 function nextMonth(){
@@ -180,6 +197,13 @@ function nextMonth(){
           }
     }
     eventExist = true;
+    var i = 0;
+    while (daysOfMonth[i] != correspondingDayOfMonth[index]){
+    	i = i+1;
+    }
+    console.log(i);
+    document.getElementById("weekday_bar").innerHTML = "<li>" + daysOfMonth[i] + "</li><li>" + daysOfMonth[i+1] + "</li><li>" + daysOfMonth[i+2] + "</li><li>" + daysOfMonth[i+3] + "</li><li>" + daysOfMonth[i+4] + "</li><li>" + daysOfMonth[i+5] + "</li><li>" + daysOfMonth[i+6] + "</li>";
+
 }
 
 </script>

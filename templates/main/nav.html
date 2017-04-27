@@ -39,9 +39,6 @@ a.button-collapse {
         <li><a href="#"><i class="material-icons">view_module</i></a></li>
         <li><a href="#"><i class="material-icons">more_vert</i></a></li>
       </ul> -->
-      <div id = "rescollege" class = "brand-logo">
-
-      </div>
     </div>
   </nav>
 
@@ -53,8 +50,7 @@ a.button-collapse {
           <!-- <img src="https://source.unsplash.com/random"> -->
           <img src="http://walops.com/wp-content/uploads/Dark-Pattern-High-Quality-Wallpaper.jpg">
         </div>
-<!--         <a href="#!user"><img class="circle" src="https://source.unsplash.com/category/people"></a>-->
-        <a href="#!user"><img class="circle" src="http://www.cse.wustl.edu/~cosgroved/courses/cse231/s17/ProfAndTAs/DennisCosgrove.jpg">
+        <a href="#!user"><img class="circle" src="https://source.unsplash.com/category/people"></a>
         <a href="#!name"><span class="white-text name">{{current_user.first_name}}</span></a>
         <a href="#!email"><span class="white-text email">{{current_user.email}}</span></a>
       </div>
@@ -95,60 +91,5 @@ a.button-collapse {
       draggable: true // Choose whether you can drag to open on touch screens
     }
   );
-  $(document).ready(function() {
-    if('{{current_user.position}}' == 'rcd'){
-      $("#rescollege").html( getResCollegeName({{current_user.res_college}})  );
-    }else{
-      var college_and_floor = getResCollegeName({{current_user.res_college}}) + " " + {{current_user.floor}}
-      console.log(college_and_floor)
-      $("#rescollege").html(college_and_floor );
-    }
 
-  });
-
-  function getResCollegeName(num){
-    switch(num){
-      case 1:
-        return "Apartments North";
-      break;
-      case 2:
-        return "Apartments South";
-      break;
-      case 3:
-        return "Brookings";
-      break;
-      case 4:
-        return "Hitzeman Hurd and Myers";
-      break;
-      case 5:
-        return "Lee Beaumont";
-      break;
-      case 6:
-        return "Ligget Koenig";
-      break;
-      case 7:
-        return "Park and Mudd";
-      break;
-      case 8:
-        return "Umrath and South 40 House";
-      break;
-      case 9:
-        return "Shanedling Dauten and Rutledge";
-      break;
-      case 10:
-        return "Thomas H. Eliot";
-      break;
-      case 11:
-        return "The Village";
-      break;
-      case 12:
-        return "Wayman Crow";
-      break;
-      case 13:
-        return "William Greenleaf Eliot";
-      break;
-      case 14:
-        return "Seigle"
-    }
-  }
 </script>

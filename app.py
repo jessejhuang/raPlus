@@ -16,7 +16,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['postgresql://postgres@localhost/raPlus']
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-# 
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres@localhost/raPlus'
 
 #import modules after init app
@@ -38,11 +37,9 @@ def on_identity_loaded(sender, identity):
     if current_user.is_authenticated:
         if current_user.position == 'ra':
             identity.provides.add(RoleNeed('ra'))
-            print("Current user is an RA", file=sys.stderr)
         elif current_user.position == 'rcd':
             identity.provides.add(RoleNeed('ra'))
             identity.provides.add(RoleNeed('rcd'))
-            print("Current user is an RCD", file=sys.stderr)
         else:
             print("Current user neither RA nor RCD", file=sys.stderr)
 
@@ -86,11 +83,6 @@ def submit1():
 @app.route('/submit_reminder')
 def submit2():
     return render_template('user/submit_reminder.html')
-
-@app.route('/calendar')
-def calendar():
-    return render_template('user/calendar.html')
-
 
 # modules below
 # post new user
@@ -185,19 +177,6 @@ def OneonOne():
 
     return render_template('user/oneonone_list.html', OneonOneList = OneonOneList)
 
-# query ra using search bar
-@app.route('/ra-directory/q=<search>', methods=['GET', 'POST'])
-def ra_directory_search(search):
-    allRA = modules.ra_directory.query.filter(modules.ra_directory.staff_first_name.contains(search))
-    return render_template('user/ra_directory.html', allRA = allRA)
-
-# query ra directory
-@app.route('/ra-directory')
-def ra_directory():
-    allRA = modules.ra_directory.query.all()
-    return render_template('user/ra_directory.html', allRA = allRA)
-
-
 @app.route('/post_login', methods=['POST'])
 def post_login():
     form_email = request.form['email']
@@ -212,7 +191,6 @@ def post_login():
         return redirect(url_for('dashboard'))
     else:
         print("Invalid password")
-    #return redirect(url_for('home'))
     return render_template('main/login.html')
 
 login_manager = LoginManager()

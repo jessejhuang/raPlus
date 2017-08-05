@@ -6,6 +6,7 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_principal import Principal, Permission, RoleNeed,UserNeed
 from flask_principal import Identity, identity_changed, identity_loaded, AnonymousIdentity
+from OpenSSL import SSL
 
 app = Flask(__name__)
 app.secret_key = "foobarbazz"
@@ -229,4 +230,5 @@ def page_not_found(e):
     return render_template('user/403.html'), 403
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    context = ('jessehuang.me.crt', 'jessehuang.me.key')
+    app.run(host='0.0.0.0', port=5000, ssl_context=context, threaded=True, debug=True)

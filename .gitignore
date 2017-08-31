@@ -56,5 +56,5 @@ docs/_build/
 
 *.DS_Store
 # SSL
-.key
-.crt
+*.key
+*.crt
